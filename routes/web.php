@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/new_user', [App\Http\Controllers\HomeController::class, 'new_user'])->name('new_user');
+Route::post('/new_user', [App\Http\Controllers\HomeController::class, 'new_user_save'])->name('new_user_save');
