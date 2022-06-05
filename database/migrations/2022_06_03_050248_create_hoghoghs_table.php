@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('code_mely');
             $table->string('age');
             $table->string('hoghogh');
+            $table->boolean('featured')->default(1);
             $table->timestamps();
         });
     }

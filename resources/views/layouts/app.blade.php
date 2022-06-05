@@ -10,11 +10,15 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.min.css') }}">
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.esm.min.js') }}"></script> -->
 </head>
 <body>
     <div>
         @yield('content')
     </div>
+
 </body>
 </html>
 

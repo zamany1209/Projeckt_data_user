@@ -13,10 +13,10 @@
                 <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('new_user') }}">New User</a>
+                <a class="nav-link" href="{{ route('new_user') }}">New User</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('new_user') }}">Add</a>
+                <a class="nav-link active" href="{{ route('add') }}">Add</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,7 +35,6 @@
     <div class="container">
         <div class="container col-6 mt-4">
             <form action="" method="post">
-                @error('name')<h2>{{ $message }}</h2>@enderror
                 @csrf
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" name="name" id="floatingInput_name" placeholder="Name">
@@ -48,6 +47,14 @@
                 <div class="form-floating mb-3">
                     <input type="number" class="form-control" name="code_mely" id="floatingInput" placeholder="092000000">
                     <label for="floatingInput">Code Mely</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" name="age" id="floatingInput_age" placeholder="1400">
+                    <label for="floatingInput_age">Age</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" name="hoghogh" id="floatingInput_hoghogh" placeholder="1,200">
+                    <label for="floatingInput_hoghogh">Hoghogh , Toman</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
