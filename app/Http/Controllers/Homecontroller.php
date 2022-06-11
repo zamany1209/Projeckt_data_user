@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\URL;
 use App\Models\user_s_;
 use App\Models\hoghogh;
 class HomeController extends Controller
@@ -137,5 +139,11 @@ class HomeController extends Controller
         }
         $Json = $Data;
         return view('Average',['Data' => $Json]);
+    }
+    public function delete(Request $request)
+    {
+        $hash = Crypt::decryptString($request->Data);
+        $data = hoghogh::where('id', $hash)->update(array('featured' => 0));
+        return redirect('home');
     }
 }

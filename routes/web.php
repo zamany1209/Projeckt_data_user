@@ -28,3 +28,4 @@ Route::post('/new_user', [App\Http\Controllers\HomeController::class, 'new_user_
 Route::get('/add', [App\Http\Controllers\HomeController::class, 'add'])->name('add');
 Route::post('/add', [App\Http\Controllers\HomeController::class, 'add_save'])->name('add_save');
 Route::get('/Average', [App\Http\Controllers\HomeController::class, 'average'])->name('Average');
+Route::get('/delete/{Data}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');

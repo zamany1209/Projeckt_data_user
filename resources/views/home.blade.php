@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+  var url_hash = "";
+</script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -62,7 +65,9 @@
                 <td>{{ $Data_user->family }}</td>
                 <td>{{ $Data_user->age }}</td>
                 <td>{{ $Data_user->hoghogh }}</td>
-                <td><a href="delete/{{ $Data_user->id+524 }}" class="btn btn-danger">Delete</a></td>
+                <td><a type="button" onclick="url_hash = '{{ Crypt::encryptString($Data_user->id) }}'" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal_delete">
+                  Delete</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -99,7 +104,7 @@
                           </tr>
                       </thead>
                       <tbody>
-
+                        @if (isset($Data_Max_1))
                           <tr>
                               <th scope="row">{{ $Data_Max_1->id }}</th>
                               <td>{{ $Data_Max_1->code_mely }}</td>
@@ -107,23 +112,28 @@
                               <td>{{ $Data_Max_1->family }}</td>
                               <td>{{ $Data_Max_1->age }}</td>
                               <td>{{ $Data_Max_1->hoghogh }}</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">{{ $Data_Max_2->id }}</th>
-                              <td>{{ $Data_Max_2->code_mely }}</td>
-                              <td>{{ $Data_Max_2->name }}</td>
-                              <td>{{ $Data_Max_2->family }}</td>
-                              <td>{{ $Data_Max_2->age }}</td>
-                              <td>{{ $Data_Max_2->hoghogh }}</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">{{ $Data_Max_3->id }}</th>
-                              <td>{{ $Data_Max_3->code_mely }}</td>
-                              <td>{{ $Data_Max_3->name }}</td>
-                              <td>{{ $Data_Max_3->family }}</td>
-                              <td>{{ $Data_Max_3->age }}</td>
-                              <td>{{ $Data_Max_3->hoghogh }}</td>
-                          </tr>
+                          </tr>                         
+                        @endif
+                        @if (isset($Data_Max_2))
+                            <tr>
+                                <th scope="row">{{ $Data_Max_2->id }}</th>
+                                <td>{{ $Data_Max_2->code_mely }}</td>
+                                <td>{{ $Data_Max_2->name }}</td>
+                                <td>{{ $Data_Max_2->family }}</td>
+                                <td>{{ $Data_Max_2->age }}</td>
+                                <td>{{ $Data_Max_2->hoghogh }}</td>
+                            </tr>
+                          @endif
+                          @if (isset($Data_Max_3))
+                            <tr>
+                                <th scope="row">{{ $Data_Max_3->id }}</th>
+                                <td>{{ $Data_Max_3->code_mely }}</td>
+                                <td>{{ $Data_Max_3->name }}</td>
+                                <td>{{ $Data_Max_3->family }}</td>
+                                <td>{{ $Data_Max_3->age }}</td>
+                                <td>{{ $Data_Max_3->hoghogh }}</td>
+                            </tr>
+                          @endif
 
                       </tbody>
                   </table>
@@ -134,13 +144,26 @@
               </div>
             </div>
           </div>
-        <script>
-          var myModal = document.getElementById('myModal')
-          var myInput = document.getElementById('myInput')
 
-          myModal.addEventListener('shown.bs.modal', function () {
-            myInput.focus()
-          })
-        </script>
+
+          <div class="modal fade" id="exampleModal_delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <div class="justify-content-md-right">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  <h3>Are You Redy ?</h3>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" onclick="location.href = '{{ URL::to('/') }}/delete/' + url_hash " class="btn btn-danger">Delete</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 </div>
 @endsection
